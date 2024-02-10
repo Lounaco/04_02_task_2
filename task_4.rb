@@ -1,6 +1,11 @@
-array = ('a'..'z').to_a
-index_array = []
-array.each_with_index do |value, index|
-  index_array << [value, index]
-end 
-# vowels = ["a","e","i","o","u","y"]
+alphabet = ('a'..'z').to_a
+
+vowels = {}
+
+vowels_list = ['a', 'e', 'i', 'o', 'u']
+
+alphabet.each_with_index do |letter, index|
+  vowels[letter.to_sym] = index + 1 if vowels_list.include?(letter)
+end
+
+puts vowels

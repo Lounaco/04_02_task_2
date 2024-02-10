@@ -25,4 +25,11 @@ serial_number = day
 (1...month).each do |m|
    serial_number += days_in_month[m]
 
-end    	
+end
+
+return serial_number
+
+end
+
+#Return result
+puts "The serial number of the date is: #{serial_number(day, month, year)} "

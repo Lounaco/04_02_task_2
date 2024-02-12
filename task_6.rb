@@ -1,26 +1,30 @@
-#Initialize the hash
+#Eempty hash for product details
+products = {}
 
-shopping_list= {
-	name_of_product: { unit_price, amount_of_product }
-}
+#User input
+loop do
+  puts "Enter the product name (or 'stop' to finish): "
+  product_name = gets.chomp
 
-#Taking input
+  break if product_name == "stop"
 
-puts " Hi! Let's count your expenses? 
-When you finish entering your shopping list, 
-enter 'stop' in the product name. "
+  puts "Enter the price per unit: "
+  price_per_unit = gets.chomp.to_f
 
-puts "Enter the product name: "
-name_of_product = gets.chomp
-name_of_product.capitalize!
+  puts "Enter the quantity purchased: "
+  quantity = gets.chomp.to_f
 
-puts "Enter the price per unit: "
-unit_price = gets.chomp.to_i
+  #Products hash
+  products[product_name] = { price_per_unit: price_per_unit, quantity: quantity }
+end
 
-puts " Enter amonth of purchased products: "
-amount_of_product= gets.chomp.to_f
+#Total amount for each product and overall total
+total_basket_amount = 0
+products.each do |product, details|
+  total_amount = details[:price_per_unit] * details[:quantity]
+  total_basket_amount += total_amount
+  
+  puts "#{product}: Total Amount - $#{total_amount}"
+end
 
-
-when 
-	name_of_product = 'stop'
-	  puts "Total purchase prise is #{}"
+puts "Total amount for all purchases in the basket: $#{total_basket_amount}"
